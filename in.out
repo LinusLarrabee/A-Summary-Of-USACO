@@ -1,0 +1,103 @@
+The First Challenge
+
+The simplest programming challenge is named 'test' and requires you to read a pair of small integers from a single input line in the file 'test.in' and print their sum to the file 'test.out'.
+
+Below is a simple solution in the 'C' programming language. Note the use of 'exit (0);', which is usually required to exit properly.
+#include <stdio.h>
+#include <stdlib.h>
+void
+main () {
+FILE *fin  = fopen ("test.in", "r");
+FILE *fout = fopen ("test.out", "w");
+int a, b;
+fscanf (fin, "%d %d", &a, &b);      /* the two input integers */
+fprintf (fout, "%d\n", a+b);
+exit (0);
+}
+Below is a simple solution in the C++ programming language. Note the use of 'return (0);', which is usually required to exit properly.
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+ofstream fout ("test.out");
+ifstream fin ("test.in");
+int a, b;
+fin >> a >> b;
+fout << a+b << endl;
+return 0;
+}
+
+Below is a simple solution in the PASCAL programming language:
+Program Test;
+Var fin, fout: text;
+a, b: word;
+Begin
+Assign(fin, 'test.in'); Reset(fin);
+Assign(fout, 'test.out'); Rewrite(fout);
+Readln(fin, a, b);
+Writeln(fout, a+b);
+Close(fout);
+End.
+Below is a simple solution in the 'Python' programming language. Both Python 2 and Python 3 are available; specify language PYTHON2 or PYTHON3 as needed. Notes:
+
+Header is on left margin with """ above and below.
+Put your own USACO training ID in the ID field.
+Python must be in all capital letters: PYTHON2 or PYTHON3.
+The TASK name changes for each different problem you submit; this task is known as 'test'.
+Copy and paste these lines to a file and submit it for testing.
+To print debug output, add 'import sys' just below the ID headers and then use sys.stderr.write('message'). If your program's output is wrong, the message will be displayed for you.
+
+
+fin = open ('test.in', 'r')
+fout = open ('test.out', 'w')
+x,y = map(int, fin.readline().split())
+sum = x+y
+fout.write (str(sum) + '\n')
+fout.close()
+
+And here is the same program, this time in JAVA. Note that the program presumes the file opens will succeed, which they will:
+
+import java.io.*;
+import java.util.*;
+
+class test {
+public static void main (String [] args) throws IOException {
+// Use BufferedReader rather than RandomAccessFile; it's much faster
+BufferedReader f = new BufferedReader(new FileReader("test.in"));
+// input file name goes above
+PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("test.out")));
+// Use StringTokenizer vs. readLine/split -- lots faster
+StringTokenizer st = new StringTokenizer(f.readLine());
+// Get line, break into tokens
+int i1 = Integer.parseInt(st.nextToken());    // first integer
+int i2 = Integer.parseInt(st.nextToken());    // second integer
+out.println(i1+i2);                           // output result
+out.close();                                  // close the output file
+}
+}
+Important: BufferedReader and StringTokenizer are far more efficient than many other schemes for reading input. They can make a huge difference in the efficiency of your program! Use them!
+You can try as many different things (subject to the caveats below) as you like to see how the grading system works. Theoretically, you can't break it or crash it. If you see a problem, please let me know.
+
+Hal Burch conducted an analysis over spring break of 1999 and made an amazing discovery: there are only 16 types of programming contest problems! Furthermore, the top several comprise almost 80% of the problems seen at the IOI. Here they are:
+
+Dynamic Programming
+Greedy
+Complete Search
+Flood Fill
+Shortest Path
+Recursive Search Techniques
+Minimum Spanning Tree
+Knapsack
+Computational Geometry
+Network Flow
+Eulerian Path
+Two-Dimensional Convex Hull
+BigNums
+Heuristic Search
+Approximate Search
+Ad Hoc Problems
+The most challenging problems are Combination Problems which involve a loop (combinations, subsets, etc.) around one of the above algorithms - or even a loop of one algorithm with another inside it. These seem extraordinarily tricky to get right, even though conceptually they are ``obvious''.
